@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pests</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./farmers.html">Farmers</a></li>
+                <li><a href="./farms.html">Farms</a></li>
+                <li><a href="./crops.html">Crops</a></li>
+                <li><a href="./weather.html">Weather</a></li>
+                <li><a href="./pests.html">Pests</a></li>
+                <li><a href="./tasks.html">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Pests</h1>
+        <!-- Add content here -->
+        <ul id="pests-list"></ul>
+
+    </div>
+
+    <script>
+        // Fetch the list of pests from the server
+        fetch('/pests')
+            .then(response => response.json())
+            .then(pests => {
+                // Get the <ul> element where we'll display the list of pests
+                const pestsList = document.getElementById('pests-list');
+
+                // Iterate over the list of pests and create <li> elements to display them
+                pests.forEach(pest => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = pest.name; // Display the pest's name (change as needed)
+                    pestsList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching pests:', error));
+    </script>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

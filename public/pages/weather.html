@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./farmers.html">Farmers</a></li>
+                <li><a href="./farms.html">Farms</a></li>
+                <li><a href="./crops.html">Crops</a></li>
+                <li><a href="./weather.html">Weather</a></li>
+                <li><a href="./pests.html">Pests</a></li>
+                <li><a href="./tasks.html">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Weather</h1>
+        <!-- Add content here -->
+        <ul id="weather-list"></ul>
+
+    </div>
+
+    <script>
+        // Fetch the list of weather from the server
+        fetch('/weather')
+            .then(response => response.json())
+            .then(weather => {
+                // Get the <ul> element where we'll display the list of weather
+                const weathersList = document.getElementById('weather-list');
+
+                // Iterate over the list of weathers and create <li> elements to display them
+                weather.forEach(weather => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = weather.temperature; // Display the weather's name (change as needed)
+                    weathersList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching weathers:', error));
+    </script>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+/your-project-name
+├── routes
+│   ├── indexRoutes.js
+│   ├── farmersRoutes.js
+│   ├── farmsRoutes.js
+│   ├── cropsRoutes.js
+│   ├── weatherRoutes.js
+│   ├── pestsRoutes.js
+│   └── tasksRoutes.js
+├── controllers
+│   ├── farmersController.js
+│   ├── farmsController.js
+│   ├── cropsController.js
+│   ├── weatherController.js
+│   ├── pestsController.js
+│   └── tasksController.js
+├── models
+│   ├── Farmer.js
+│   ├── Farm.js
+│   ├── Crop.js
+│   ├── Weather.js
+│   ├── Pest.js
+│   └── Task.js
+├── views
+│   ├── index.ejs
+│   ├── farmers.ejs
+│   ├── farms.ejs
+│   ├── crops.ejs
+│   ├── weather.ejs
+│   ├── pests.ejs
+│   └── tasks.ejs
+├── public
+│   └── css
+│       └── style.css
+└── server.js

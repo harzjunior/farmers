@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./farmers.html">Farmers</a></li>
+                <li><a href="./farms.html">Farms</a></li>
+                <li><a href="./crops.html">Crops</a></li>
+                <li><a href="./weather.html">Weather</a></li>
+                <li><a href="./pests.html">Pests</a></li>
+                <li><a href="./tasks.html">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Farmers</h1>
+        <!-- Add content here -->
+        <ul id="farmers-list"></ul> <!-- This is where the list of farmers will be displayed -->
+    </div>
+
+    <script>
+        // Fetch the list of farmers from the server
+        fetch('/farmers')
+            .then(response => response.json())
+            .then(farmers => {
+                // Get the <ul> element where we'll display the list of farmers
+                const farmersList = document.getElementById('farmers-list');
+
+                // Iterate over the list of farmers and create <li> elements to display them
+                farmers.forEach(farmer => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = farmer.name; // Display the farmer's name (change as needed)
+                    farmersList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching farmers:', error));
+    </script>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

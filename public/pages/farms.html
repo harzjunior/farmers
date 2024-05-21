@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>farms</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./farmers.html">Farmers</a></li>
+                <li><a href="./farms.html">Farms</a></li>
+                <li><a href="./crops.html">Crops</a></li>
+                <li><a href="./weather.html">Weather</a></li>
+                <li><a href="./pests.html">Pests</a></li>
+                <li><a href="./tasks.html">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Farms</h1>
+        <!-- Add content here -->
+        <ul id="farms-list"></ul>
+    </div>
+
+    <script>
+        // Fetch the list of farms from the server
+        fetch('/farms')
+            .then(response => response.json())
+            .then(farms => {
+                // Get the <ul> element where we'll display the list of farms
+                const farmsList = document.getElementById('farms-list');
+
+                // Iterate over the list of farms and create <li> elements to display them
+                farms.forEach(farm => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = farm.name; // Display the farm's name (change as needed)
+                    farmsList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching farms:', error));
+    </script>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

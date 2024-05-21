@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./farmers.html">Farmers</a></li>
+                <li><a href="./farms.html">Farms</a></li>
+                <li><a href="./crops.html">Crops</a></li>
+                <li><a href="./weather.html">Weather</a></li>
+                <li><a href="./pests.html">Pests</a></li>
+                <li><a href="./tasks.html">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Crops</h1>
+        <!-- Add content here -->
+        <ul id="crops-list"></ul>
+    </div>
+
+    <script>
+        // Fetch the list of crops from the server
+        fetch('/crops')
+            .then(response => response.json())
+            .then(crops => {
+                // Get the <ul> element where we'll display the list of crops
+                const cropsList = document.getElementById('crops-list');
+
+                // Iterate over the list of crops and create <li> elements to display them
+                crops.forEach(crop => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = crop.variety; // Display the crop's variety (change as needed)
+                    cropsList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching crops:', error));
+    </script>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
